@@ -49,6 +49,7 @@ class GenreController extends AbstractController
         //$description = $faker->words(3, true);
 
         //le code ci-dessous permet d'ajouter manuellement un genre à la base de données
+        //pensez à bien lancer l'adresse /nouveaugenre manuellement
         $nom = 'Rock';
         $description = "Guitares, lunettes cools et cuir";
 
