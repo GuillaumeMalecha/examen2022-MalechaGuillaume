@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ékoutsa - Toutes les chansons{% endblock %}
+
+{% block body %}
+
+    <h2>Toutes les chansons</h2>
+
+    {% for chanson in chansons %}
+
+        <h4>Titre : {{ chanson.titre }}</h4>
+        <h5>Artiste : {{ chanson.auteur }}</h5>
+        <h5>Album : {{ chanson.album }}</h5>
+        <br>
+    {% endfor %}
+
+
+{% endblock %}
+
