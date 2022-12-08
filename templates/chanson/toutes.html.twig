@@ -8,9 +8,11 @@
 
     {% for chanson in chansons %}
 
-        <h4>Titre : {{ chanson.titre }}</h4>
+        <h4>Titre : <a href="{{ path ("detailchanson", {id:chanson.id}) }}">{{ chanson.titre }}</a></h4>
         <h5>Artiste : {{ chanson.auteur }}</h5>
         <h5>Album : {{ chanson.album }}</h5>
+        <h6>Votes : {{ chanson.votes }}</h6>
+        <br>
         <br>
     {% endfor %}
 

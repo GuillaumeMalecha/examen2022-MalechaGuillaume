@@ -38,6 +38,22 @@ class ChansonController extends AbstractController
         ]);
     }
 
+    //Fonction permettant d'afficher les détails d'une chanson
+    /**
+     * @Route("/detailchanson/{id}", name="detailchanson")
+     */
+    public function detailchanson($id, EntityManagerInterface $entityManager): Response
+    {
+        $repository = $entityManager->getRepository(Chanson::class);
+        $chanson = $repository->find($id);
+
+        return $this->render('chanson/detail.html.twig', [
+            'chanson' => $chanson
+    ]);
+    }
+
+
+
 
     //Fonction permettant de générer aléatoirement des chansons dans la base de données
     /**

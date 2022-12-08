@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ékoutsa - Tous les genres{% endblock %}
+
+{% block body %}
+
+    <h2>Liste des genres</h2>
+
+    {% for genre in genres %}
+
+        <h4>Nom : {{ genre.nom }}</h4>
+        <h5>Description : {{ genre.description }}</h5>
+        <br>
+    {% endfor %}
+
+
+{% endblock %}
+

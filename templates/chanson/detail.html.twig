@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ékoutsa - Informations de la chanson {{ chanson.titre }}{% endblock %}
+
+{% block body %}
+
+    <h4>Titre : {{ chanson.titre }}</h4>
+    <h5>Artiste : {{ chanson.auteur }}</h5>
+    <h5>Album : {{ chanson.album }}</h5>
+    <h5>Paroles : {{ chanson.paroles }}</h5>
+
+
+{% endblock %}
+
