@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Chanson;
+use App\Form\ChansonType;
 use Doctrine\ORM\EntityManagerInterface;
 use Faker\Factory;
 use Faker\Provider\DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 use function Zenstruck\Foundry\factory;
 use function Zenstruck\Foundry\faker;
 
@@ -83,5 +85,29 @@ class ChansonController extends AbstractController
             'controller_name' => 'ChansonController',
         ]);
 
+    }
+
+    /**
+     * @Route("/ajouterchanson", name="ajouterchanson")
+     */
+
+    public function ajouterchanson(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $chanson = new Chanson();
+        $chanson->setDateAjout(new \DateTime('now'));
+        $form = $this->createForm(ChansonType::class, $chanson);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $chanson = $form->getData();
+            $entityManager->persist($chanson);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('detailchanson');
+        }
+
+        return $this->renderForm('chanson/ajouter.html.twig', [
+            'form'=>$form
+        ]);
     }
 }
