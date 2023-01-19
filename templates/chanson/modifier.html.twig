@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier la chanson{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1>Modifier la chanson : {{ chanson.id }}</h1>
+
+        {{ form_start(form) }}
+        {{ form_end(form) }}
+
+
+    </div>
+{% endblock %}

@@ -124,4 +124,28 @@ class ChansonController extends AbstractController
 
         return $this->redirectToRoute('touteschansons');
     }
+
+    /**
+     * @Route("/detailchanson/{id}/modifier", name="modifierchanson")
+     */
+
+    public function modifierChanson(int $id, EntityManagerInterface $entityManager, Request $request)
+    {
+        $repository = $entityManager->getRepository(Chanson::class);
+        $chanson = $repository->find($id);
+        $form = $this->createForm(ChansonType::class, $chanson);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $chanson = $form->getData();
+            $entityManager->flush();
+
+            return $this->redirectToRoute('touteschansons');
+        }
+
+        return $this->renderForm('chanson/modifier.html.twig', [
+            'form'=>$form,
+            'chanson'=>$chanson,
+        ]);
+    }
 }

@@ -10,6 +10,8 @@
     <h5>Paroles : {{ chanson.paroles }}</h5>
 
     <a href="{{ path('supprimerchanson', {id: chanson.id}) }}">Supprimer la chanson</a>
+    <br>
+    <a href="{{ path('modifierchanson', {id: chanson.id}) }}">Modifier la chanson</a>
 
 {% endblock %}
 
