@@ -110,4 +110,18 @@ class ChansonController extends AbstractController
             'form'=>$form
         ]);
     }
+
+    /**
+     * @Route("/detailchanson/{id}/supprimer", name="supprimerchanson")
+     */
+
+    public function supprimerChanson(int $id, EntityManagerInterface $entityManager)
+    {
+        $repository = $entityManager->getRepository(Chanson::class);
+        $chanson = $repository->find($id);
+        $entityManager->remove($chanson);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('touteschansons');
+    }
 }

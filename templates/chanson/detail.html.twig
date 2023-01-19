@@ -9,6 +9,7 @@
     <h5>Album : {{ chanson.album }}</h5>
     <h5>Paroles : {{ chanson.paroles }}</h5>
 
+    <a href="{{ path('supprimerchanson', {id: chanson.id}) }}">Supprimer la chanson</a>
 
 {% endblock %}
 
